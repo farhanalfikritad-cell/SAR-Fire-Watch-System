@@ -1,0 +1,267 @@
+/* SAR FireWatch - Tactical Command Center Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg-main: #060c18;
+  --bg-card: #0c1629;
+  --bg-sidebar: #091122;
+  --border-color: #1a2844;
+  --accent-cyan: #38bdf8;
+  --accent-red: #ef4444;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-main);
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+code, .font-mono {
+  font-family: 'JetBrains+Mono', monospace;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2e4a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf866;
+}
+
+/* Leaflet Map Custom Marker Styles */
+.custom-leaflet-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.hotspot-pulse {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot-dot {
+  font-size: 16px;
+  z-index: 2;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.9));
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.incident-marker {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: #0b1329;
+  border: 2px solid #ef4444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.incident-marker:hover {
+  transform: scale(1.15);
+}
+
+.marker-priority {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+}
+
+.marker-icon {
+  font-size: 16px;
+}
+
+.command-post-marker, .shelter-marker {
+  width: 32px;
+  height: 32px;
+  background: #09162e;
+  border: 2px solid #06b6d4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  position: relative;
+}
+
+.post-label {
+  position: absolute;
+  bottom: -16px;
+  font-size: 9px;
+  font-weight: 700;
+  background: #040814;
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #38bdf8;
+  border: 1px solid #1e3a5f;
+  white-space: nowrap;
+}
+
+.team-gps-marker {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background: #0f1c36;
+  border: 2px solid #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+}
+
+.gps-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.unit-tag {
+  position: absolute;
+  bottom: -15px;
+  font-size: 8px;
+  font-weight: bold;
+  background: #050b18;
+  padding: 0 3px;
+  border-radius: 3px;
+  color: #6ee7b7;
+  border: 1px solid #065f46;
+  white-space: nowrap;
+}
+
+/* Tactical Leaflet Popups */
+.leaflet-popup-content-wrapper {
+  background: #091326 !important;
+  border: 1px solid #1e3a5f !important;
+  border-radius: 12px !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: #091326 !important;
+}
+
+.popup-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid #1e2e4a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Badge classes */
+.badge-critical {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+.badge-high {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.badge-medium {
+  background: rgba(6, 182, 212, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+}
+.badge-low {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* Print styling for SITREP */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  aside, header, #sidebar-nav, .no-print, button, #map-controls-panel {
+    display: none !important;
+  }
+  #printable-sitrep {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  #printable-sitrep * {
+    color: #000000 !important;
+    background: transparent !important;
+    border-color: #cccccc !important;
+  }
+}
+
+/* Live Telemetry Moving Unit Radar Halo */
+@keyframes radar-ping {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  80%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+.radar-ping {
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.google-maps-badge {
+  background: linear-gradient(135deg, #4285F4, #34A853);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
